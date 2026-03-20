@@ -7,7 +7,9 @@ const VISIBLE = 4;
 function Productos({ productosData }) {
   const { t } = useTranslation();
   const [busqueda, setBusqueda] = useState("");
-  const [indice, setIndice] = useState(0);
+  const [pagina, setPagina] = useState(0);
+  const [animando, setAnimando] = useState(false);
+  const [direccion, setDireccion] = useState("derecha");
   const [productos, setProductos] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
@@ -33,16 +35,24 @@ function Productos({ productosData }) {
     p.nombre.toLowerCase().includes(busqueda.toLowerCase())
   );
 
-  const maxIndice = Math.max(0, filtrados.length - VISIBLE);
-  const anterior = () => setIndice((i) => Math.max(0, i - 1));
-  const siguiente = () => setIndice((i) => Math.min(maxIndice, i + 1));
+  const totalPaginas = Math.ceil(filtrados.length / VISIBLE);
+
+  const irAPagina = (nuevaP, dir = "derecha") => {
+    if (nuevaP === pagina || animando) return;
+    setDireccion(dir);
+    setAnimando(true);
+    setTimeout(() => {
+      setPagina(nuevaP);
+      setAnimando(false);
+    }, 220);
+  };
 
   const handleBusqueda = (e) => {
     setBusqueda(e.target.value);
-    setIndice(0);
+    setPagina(0);
   };
 
-  const visibles = filtrados.slice(indice, indice + VISIBLE);
+  const visibles = filtrados.slice(pagina * VISIBLE, pagina * VISIBLE + VISIBLE);
 
   return (
     <section id="productos" className={styles.section}>
@@ -71,15 +81,11 @@ function Productos({ productosData }) {
 
       {/* CARRUSEL */}
       <div className={styles.carruselWrapper}>
-        <button
-          className={`${styles.flecha} ${styles.flechaIzq}`}
-          onClick={anterior}
-          disabled={indice === 0}
+        <div
+          className={`${styles.carrusel} ${animando
+            ? (direccion === "derecha" ? styles.salirIzq : styles.salirDer)
+            : styles.entrar}`}
         >
-          &#8249;
-        </button>
-
-        <div className={styles.carrusel}>
           {visibles.length > 0 ? (
             visibles.map((producto) => (
               <div key={producto.id} className={styles.card}>
@@ -106,26 +112,38 @@ function Productos({ productosData }) {
             <p>{t("noProductos") || "No hay productos disponibles aún."}</p>
           )}
         </div>
-
-        <button
-          className={`${styles.flecha} ${styles.flechaDer}`}
-          onClick={siguiente}
-          disabled={indice >= maxIndice}
-        >
-          &#8250;
-        </button>
       </div>
 
-      {/* DOTS */}
-      <div className={styles.dots}>
-        {Array.from({ length: maxIndice + 1 }).map((_, i) => (
+      {/* PAGINACIÓN */}
+      {totalPaginas > 1 && (
+        <div className={styles.paginacion}>
           <button
-            key={i}
-            className={`${styles.dot} ${i === indice ? styles.dotActivo : ""}`}
-            onClick={() => setIndice(i)}
-          />
-        ))}
-      </div>
+            className={styles.paginaBtn}
+            onClick={() => irAPagina(pagina - 1, "izquierda")}
+            disabled={pagina === 0}
+          >
+            ←
+          </button>
+          <div className={styles.paginas}>
+            {Array.from({ length: totalPaginas }).map((_, i) => (
+              <button
+                key={i}
+                className={`${styles.pagina} ${i === pagina ? styles.paginaActiva : ""}`}
+                onClick={() => irAPagina(i, i > pagina ? "derecha" : "izquierda")}
+              >
+                {i + 1}
+              </button>
+            ))}
+          </div>
+          <button
+            className={styles.paginaBtn}
+            onClick={() => irAPagina(pagina + 1, "derecha")}
+            disabled={pagina >= totalPaginas - 1}
+          >
+            →
+          </button>
+        </div>
+      )}
 
       {/* MODAL */}
       {productoSeleccionado && (
@@ -137,7 +155,6 @@ function Productos({ productosData }) {
             className={styles.modal}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botón cerrar */}
             <button
               className={styles.modalCerrar}
               onClick={() => setProductoSeleccionado(null)}
@@ -146,7 +163,6 @@ function Productos({ productosData }) {
             </button>
 
             <div className={styles.modalContenido}>
-              {/* Imagen */}
               <div className={styles.modalImagen}>
                 {productoSeleccionado.imagen ? (
                   <img src={productoSeleccionado.imagen} alt={productoSeleccionado.nombre} />
@@ -155,22 +171,11 @@ function Productos({ productosData }) {
                 )}
               </div>
 
-              {/* Info */}
               <div className={styles.modalInfo}>
                 <span className={styles.modalEtiqueta}>Producto</span>
                 <h2 className={styles.modalTitulo}>{productoSeleccionado.nombre}</h2>
                 <div className={styles.modalBarra} />
                 <p className={styles.modalDescripcion}>{productoSeleccionado.descripcion}</p>
-                <p className={styles.modalTexto}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <p className={styles.modalTexto}>
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum.
-                </p>
                 <a
                   className={styles.modalBtn}
                   href="https://wa.me/573196659252"

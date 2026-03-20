@@ -18,7 +18,7 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(16, 171, 195, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(148, 193, 32, 0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -33,9 +33,9 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(16, 171, 195, 0.09);
-  border: 1px solid rgba(16, 171, 195, 0.25);
-  color: #10ABC3;
+  background: rgba(148, 193, 32, 0.09);
+  border: 1px solid rgba(148, 193, 32, 0.25);
+  color: #94C120;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2.5px;
@@ -116,8 +116,8 @@
 }
 
 .buscador:focus {
-  border-color: #10ABC3;
-  box-shadow: 0 0 0 3px rgba(16, 171, 195, 0.1);
+  border-color: #94C120;
+  box-shadow: 0 0 0 3px rgba(148, 193, 32, 0.1);
 }
 
 /* ─── CARRUSEL WRAPPER ─── */
@@ -174,8 +174,8 @@
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 36px rgba(16, 171, 195, 0.12);
-  border-color: rgba(16, 171, 195, 0.28);
+  box-shadow: 0 14px 36px rgba(148, 193, 32, 0.15);
+  border-color: rgba(148, 193, 32, 0.35);
 }
 
 /* ─── IMAGEN ─── */
@@ -215,7 +215,7 @@
   left: 18px;
   right: 18px;
   height: 2px;
-  background: linear-gradient(90deg, #10ABC3, transparent);
+  background: linear-gradient(90deg, #94C120, transparent);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -297,8 +297,8 @@
 }
 
 .paginaBtn:hover:not(:disabled) {
-  background: #10ABC3;
-  border-color: #10ABC3;
+  background: #94C120;
+  border-color: #94C120;
   color: white;
   transform: scale(1.05);
 }
@@ -332,17 +332,17 @@
 }
 
 .pagina:hover {
-  border-color: #10ABC3;
-  color: #10ABC3;
+  border-color: #94C120;
+  color: #94C120;
   transform: translateY(-2px);
 }
 
 .paginaActiva {
-  background: #10ABC3;
-  border-color: #10ABC3;
+  background: #94C120;
+  border-color: #94C120;
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 4px 14px rgba(16, 171, 195, 0.35);
+  box-shadow: 0 4px 14px rgba(148, 193, 32, 0.35);
   transform: translateY(-2px);
 }
 
