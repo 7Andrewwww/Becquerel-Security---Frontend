@@ -61,7 +61,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 48px;
   font-weight: 800;
-  color: #5e5e5e;
+  color: #1a1a1a;
   margin: 0 0 16px 0;
   letter-spacing: -0.5px;
   line-height: 1.1;
@@ -252,4 +252,9 @@
   .tags { justify-content: center; }
   .numeroDecor { font-size: 72px; }
   .nombre { font-size: 22px; }
+}
+
+/* ─── OCULTAR NÚMERO DECORATIVO ─── */
+.numeroDecor {
+  display: none;
 }

@@ -15,8 +15,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
-  padding: 36px 80px;
+  gap: 32px;
+  padding: 20px 80px;
   position: relative;
   z-index: 1;
 }
@@ -27,7 +27,7 @@
 }
 
 .logo {
-  max-width: 140px;
+  max-width: 110px;
   width: 100%;
   transition: opacity 0.2s, transform 0.2s;
 }
@@ -40,7 +40,7 @@
 /* ─── DIVISOR ─── */
 .divider {
   width: 1px;
-  height: 52px;
+  height: 40px;
   background: rgba(0, 0, 0, 0.12);
   flex-shrink: 0;
 }
@@ -50,15 +50,15 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 
 .contactoItem {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 13px;
+  gap: 8px;
+  font-size: 12px;
   font-weight: 500;
   color: #3a3a3a;
   font-family: "Montserrat", sans-serif;
@@ -70,10 +70,9 @@
   color: #10ABC3;
 }
 
-/* Íconos SVG de contorno como en el mockup */
 .icono {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,15 +86,15 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 8px;
 }
 
 .redBtn {
   background: #1a1a1a;
   color: #ffffff;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,14 +104,14 @@
 
 .redBtn:hover {
   background: #10ABC3;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(16, 171, 195, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 171, 195, 0.3);
 }
 
 /* ─── BARRA INFERIOR ─── */
 .footerBottom {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 14px 80px;
+  padding: 10px 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,23 +132,23 @@
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .footerMain {
-    padding: 32px 40px;
-    gap: 28px;
+    padding: 18px 40px;
+    gap: 20px;
   }
   .logo {
-    max-width: 110px;
+    max-width: 90px;
   }
 }
 
 @media (max-width: 768px) {
   .footerMain {
     flex-direction: column;
-    padding: 36px 24px;
-    gap: 24px;
+    padding: 24px 24px;
+    gap: 16px;
     text-align: center;
   }
   .divider {
-    width: 80px;
+    width: 60px;
     height: 1px;
   }
   .logoWrapper {
@@ -163,6 +162,6 @@
     justify-content: center;
   }
   .footerBottom {
-    padding: 12px 24px;
+    padding: 10px 24px;
   }
 }

@@ -182,7 +182,7 @@ function Contacto() {
               >
                 <div className={styles.redIcono}><IconoX /></div>
                 <div className={styles.redTexto}>
-                  <span className={styles.redNombre}>X (Twitter)</span>
+                  <span className={styles.redNombre}>X</span>
                   <span className={styles.redHandle}>@BecquerelSecu</span>
                 </div>
                 <span className={styles.redFlecha}><IconoFlechaAfuera /></span>
