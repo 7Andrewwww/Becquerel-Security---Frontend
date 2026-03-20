@@ -1,0 +1,439 @@
+/* ─── FUENTES ─── */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+/* ─── VARIABLES ─── */
+:root {
+  --azul:      #10ABC3;
+  --azul-dark: #0d8fa3;
+  --verde:     #94C120;
+  --verde-dark:#7da810;
+  --gris:      #606062;
+  --blanco:    #ffffff;
+  --fondo:     #f0f4f6;
+}
+
+/* ─── PAGE ─── */
+.page {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  background: var(--blanco);
+}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hero {
+  width: 100%;
+  padding-top: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+.heroContainer {
+  max-width: 1400px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 80px 100px;
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  min-height: 460px;
+}
+
+.heroContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroTitulo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: #5e5e5e;
+  margin: 0 0 20px 0;
+  letter-spacing: -1px;
+}
+
+.heroSubtitulo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--gris);
+  max-width: 420px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ══════════════════════════════
+   CONTENIDO — dos cards lado a lado
+══════════════════════════════ */
+.contenido {
+  padding: 56px 100px 72px;
+  background: var(--blanco);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ══════════════════════════════
+   CARD BASE
+══════════════════════════════ */
+.card {
+  background: var(--fondo);
+  border-radius: 20px;
+  border: 1.5px solid #efefef;
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 60px rgba(16, 171, 195, 0.12);
+  border-color: rgba(16, 171, 195, 0.2);
+  transform: translateY(-4px);
+}
+
+/* ─── Franja superior animada ─── */
+.cardStripe {
+  height: 4px;
+  background: linear-gradient(90deg, var(--azul), var(--verde));
+  background-size: 200% 100%;
+  animation: stripeFlow 3s ease infinite;
+}
+
+@keyframes stripeFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Orbe decorativo de fondo ─── */
+.card::before {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 171, 195, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  transition: transform 0.6s ease;
+}
+
+.card:hover::before {
+  transform: scale(1.3);
+}
+
+/* ─── Contenido interno ─── */
+.cardInner {
+  padding: 36px 40px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Header de la card ─── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.cardIconoHeader {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(16, 171, 195, 0.08);
+  border: 1.5px solid rgba(16, 171, 195, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul);
+  flex-shrink: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.card:hover .cardIconoHeader {
+  background: rgba(16, 171, 195, 0.15);
+  transform: rotate(8deg) scale(1.05);
+}
+
+.cardTitulo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+/* ══════════════════════════════
+   CONTACTO DIRECTO — items
+══════════════════════════════ */
+.contactoLista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contactoItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--blanco);
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.contactoItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--azul), var(--verde));
+  border-radius: 3px 0 0 3px;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.contactoItem:hover::before {
+  transform: scaleY(1);
+}
+
+.contactoItem:hover {
+  border-color: rgba(16, 171, 195, 0.2);
+  background: rgba(16, 171, 195, 0.04);
+  transform: translateX(4px);
+}
+
+.contactoIcono {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(16, 171, 195, 0.2);
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.contactoItem:hover .contactoIcono {
+  background: rgba(16, 171, 195, 0.1);
+  border-color: rgba(16, 171, 195, 0.4);
+  transform: scale(1.08);
+}
+
+.contactoInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.contactoLabel {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+
+.contactoValor {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.contactoFlecha {
+  flex-shrink: 0;
+  color: var(--azul);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.contactoItem:hover .contactoFlecha {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ══════════════════════════════
+   REDES SOCIALES — grid 2x2
+══════════════════════════════ */
+.redesSubtitulo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: var(--gris);
+  line-height: 1.7;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+}
+
+.redesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.redItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--blanco);
+  border: 1.5px solid transparent;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, background 0.25s, transform 0.3s;
+}
+
+.redItem::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 80%
+  );
+  transition: left 0.5s ease;
+}
+
+.redItem:hover::after {
+  left: 160%;
+}
+
+.redItem:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.9);
+}
+
+.facebook:hover  { border-color: rgba(24, 119, 242, 0.3); box-shadow: 0 6px 20px rgba(24,119,242,0.1); }
+.instagram:hover { border-color: rgba(221, 42, 123, 0.3); box-shadow: 0 6px 20px rgba(221,42,123,0.1); }
+.linkedin:hover  { border-color: rgba(10, 102, 194, 0.3); box-shadow: 0 6px 20px rgba(10,102,194,0.1); }
+.x:hover         { border-color: rgba(26, 26, 26, 0.2);   box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+.redIcono {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.redItem:hover .redIcono {
+  transform: rotate(-6deg) scale(1.1);
+}
+
+.facebook  .redIcono { border-color: rgba(24, 119, 242, 0.25); background: rgba(24, 119, 242, 0.07); color: #1877f2; }
+.instagram .redIcono { border-color: rgba(221, 42, 123, 0.25); background: rgba(221, 42, 123, 0.07); color: #dd2a7b; }
+.linkedin  .redIcono { border-color: rgba(10, 102, 194, 0.25); background: rgba(10, 102, 194, 0.07); color: #0a66c2; }
+.x         .redIcono { border-color: rgba(26, 26, 26, 0.2);    background: rgba(26, 26, 26, 0.05);   color: #1a1a1a; }
+
+.redTexto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.redNombre {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.redHandle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--gris);
+}
+
+.redFlecha {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--gris);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.redItem:hover .redFlecha {
+  opacity: 0.6;
+  transform: translate(0, 0);
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 1100px) {
+  .heroContainer { padding: 60px 60px; }
+  .heroTitulo { font-size: 44px; }
+  .contenido { padding: 44px 60px 56px; }
+}
+
+@media (max-width: 900px) {
+  .heroContainer { padding: 50px 40px; width: 94%; }
+  .heroTitulo { font-size: 36px; }
+  .heroContent { width: 65%; }
+  .contenido { padding: 36px 40px 48px; grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .hero { padding-top: 68px; }
+  .heroContainer { padding: 44px 28px 52px; width: 92%; margin: 12px auto; }
+  .heroContainer::before { background: rgba(255, 255, 255, 0.88); }
+  .heroContent { width: 100%; }
+  .heroTitulo { font-size: 30px; letter-spacing: -0.5px; }
+  .heroSubtitulo { max-width: 100%; }
+  .contenido { padding: 28px 16px 44px; gap: 16px; }
+  .cardInner { padding: 28px 24px 32px; }
+}
+
+@media (max-width: 480px) {
+  .heroTitulo { font-size: 26px; }
+  .redesGrid { grid-template-columns: 1fr; }
+}

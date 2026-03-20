@@ -1,0 +1,168 @@
+/* ─── FUENTES ─── */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ─── FOOTER ─── */
+.footer {
+  width: 100%;
+  background: #e8eaec;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ─── CONTENIDO PRINCIPAL ─── */
+.footerMain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 36px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── LOGO ─── */
+.logoWrapper {
+  flex: 1;
+}
+
+.logo {
+  max-width: 140px;
+  width: 100%;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.85;
+  transform: scale(1.03);
+}
+
+/* ─── DIVISOR ─── */
+.divider {
+  width: 1px;
+  height: 52px;
+  background: rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+/* ─── CONTACTO ─── */
+.contacto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.contactoItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3a3a3a;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contactoItem:hover {
+  color: #10ABC3;
+}
+
+/* Íconos SVG de contorno como en el mockup */
+.icono {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #3a3a3a;
+}
+
+/* ─── REDES ─── */
+.redes {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.redBtn {
+  background: #1a1a1a;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.redBtn:hover {
+  background: #10ABC3;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(16, 171, 195, 0.3);
+}
+
+/* ─── BARRA INFERIOR ─── */
+.footerBottom {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 14px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerCopy {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.35);
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.footerCopy span {
+  color: #10ABC3;
+  font-weight: 600;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .footerMain {
+    padding: 32px 40px;
+    gap: 28px;
+  }
+  .logo {
+    max-width: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerMain {
+    flex-direction: column;
+    padding: 36px 24px;
+    gap: 24px;
+    text-align: center;
+  }
+  .divider {
+    width: 80px;
+    height: 1px;
+  }
+  .logoWrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .contacto {
+    align-items: center;
+  }
+  .redes {
+    justify-content: center;
+  }
+  .footerBottom {
+    padding: 12px 24px;
+  }
+}

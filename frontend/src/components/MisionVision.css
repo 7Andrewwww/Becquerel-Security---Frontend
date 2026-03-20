@@ -1,0 +1,210 @@
+/* ─── FUENTES ─── */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* ─── WRAPPER GENERAL ─── */
+.mvWrapper {
+  width: 100%;
+  background: #ffffff;
+  padding: 64px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── CARD ─── */
+.mvCard {
+  background: #f0f4f6;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.07);
+  padding: 56px 64px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── CONTENEDOR INTERIOR ─── */
+.mvContainer {
+  display: flex;
+  align-items: center;
+  gap: 72px;
+}
+
+.mvContainer.invertido {
+  flex-direction: row-reverse;
+}
+
+/* ─── LADO IMAGEN ─── */
+.mvImageWrapper {
+  flex-shrink: 0;
+  width: 340px;
+  position: relative;
+}
+
+.mvImageWrapper::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(16, 171, 195, 0.12), rgba(148, 193, 32, 0.08));
+  z-index: 0;
+}
+
+.mvImageBg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.mvImageBg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.mvImage {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.mvImage img {
+  width: 100%;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+  animation: flotar 6s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* ─── LADO TEXTO ─── */
+.mvTexto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Etiqueta */
+.mvEtiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #10ABC3;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 16px;
+}
+
+.mvEtiqueta::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: #10ABC3;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Título */
+.mvTitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: #5e5e5e;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+}
+
+/* Barra degradada */
+.mvBarra {
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, #10ABC3, #94C120);
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+/* Texto */
+.mvText {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #606062;
+  line-height: 1.85;
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ─── RESPONSIVE ─── */
+
+@media (max-width: 1100px) {
+  .mvWrapper {
+    padding: 48px 40px;
+  }
+  .mvCard {
+    padding: 48px 48px;
+  }
+  .mvContainer {
+    gap: 48px;
+  }
+  .mvImageWrapper {
+    width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mvWrapper {
+    padding: 32px 20px;
+    gap: 24px;
+  }
+  .mvCard {
+    padding: 36px 28px;
+    border-radius: 16px;
+  }
+  .mvContainer,
+  .mvContainer.invertido {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .mvImageWrapper {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .mvTitle {
+    font-size: 28px;
+  }
+  .mvText {
+    font-size: 14px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .mvCard {
+    padding: 28px 20px;
+  }
+  .mvTitle {
+    font-size: 24px;
+  }
+}

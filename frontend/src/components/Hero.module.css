@@ -1,0 +1,256 @@
+/* ─── FUENTES ─── */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+/* ─── HERO ─── */
+.hero {
+  width: 100%;
+  padding-top: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── CONTENEDOR HERO ─── */
+.heroContainer {
+  max-width: 1400px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 80px 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  min-height: 500px;
+}
+
+/* Overlay — blanco fuerte izquierda, transparente derecha */
+.heroContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+}
+
+.heroText,
+.heroImage {
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── TEXTO ─── */
+.heroText {
+  width: 50%;
+}
+
+.heroText h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 54px;
+  color: #5e5e5e;
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+/* Subrayado degradado en la última palabra */
+.heroTextoAcento {
+  position: relative;
+  display: inline;
+}
+
+.heroTextoAcento::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #10ABC3 0%, #94C120 100%);
+  border-radius: 2px;
+}
+
+.heroText p {
+  margin-top: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #606062;
+  max-width: 420px;
+  line-height: 1.75;
+}
+
+/* ─── BOTONES ─── */
+.heroButtons {
+  margin-top: 36px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btnProductos {
+  background: #94C120;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(148, 193, 32, 0.38);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnProductos::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: left 0.4s ease;
+}
+.btnProductos:hover::before { left: 160%; }
+.btnProductos:hover {
+  background: #7da810;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(148, 193, 32, 0.45);
+}
+
+.btnNosotros {
+  background: #606062;
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.btnNosotros:hover {
+  background: #404042;
+  transform: translateY(-2px);
+}
+
+/* ─── IMAGEN ─── */
+.heroImage {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage img {
+  max-width: 500px;
+  width: 100%;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.10));
+  animation: flotar 5s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ─── RESPONSIVE ─── */
+
+@media (max-width: 1100px) {
+  .heroContainer {
+    padding: 60px 60px;
+  }
+  .heroText h1 {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroContainer {
+    padding: 50px 40px;
+    width: 94%;
+  }
+  .heroText h1 {
+    font-size: 36px;
+    letter-spacing: -0.5px;
+  }
+  .heroText p {
+    font-size: 14px;
+  }
+  .heroImage img {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 68px;
+  }
+  .heroContainer {
+    flex-direction: column;
+    padding: 44px 28px 52px;
+    width: 92%;
+    margin: 12px auto;
+    text-align: center;
+  }
+  .heroContainer::before {
+    background: rgba(255, 255, 255, 0.88);
+  }
+  .heroText {
+    width: 100%;
+  }
+  .heroText h1 {
+    font-size: 32px;
+  }
+  .heroText p {
+    max-width: 100%;
+    font-size: 14px;
+  }
+  .heroButtons {
+    justify-content: center;
+  }
+  .heroImage {
+    width: 100%;
+    margin-top: 28px;
+  }
+  .heroImage img {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroText h1 {
+    font-size: 26px;
+  }
+  .heroButtons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btnProductos,
+  .btnNosotros {
+    justify-content: center;
+  }
+}
