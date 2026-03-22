@@ -85,6 +85,69 @@
   font-weight: 400;
 }
 
+/* ══════════════════════════════
+   MISIÓN Y VISIÓN
+══════════════════════════════ */
+.mvSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 0 80px 64px;
+  background: var(--blanco);
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mvCard {
+  background: var(--fondo);
+  border-radius: 20px;
+  padding: 40px 44px;
+  border: 1.5px solid #efefef;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.mvCard:hover {
+  box-shadow: 0 12px 40px rgba(16, 171, 195, 0.1);
+  border-color: rgba(16, 171, 195, 0.2);
+}
+
+.mvIcono {
+  color: var(--azul);
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.mvTitulo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.3px;
+}
+
+.mvBarra {
+  width: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--azul), var(--verde));
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.mvTexto {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gris);
+  line-height: 1.85;
+  margin: 0;
+}
+
 /* ─── EQUIPO ─── */
 .equipo {
   display: flex;
@@ -93,6 +156,31 @@
   gap: 32px;
   padding: 0 80px 80px;
   background: var(--blanco);
+}
+
+/* ─── Subtítulo "El equipo" centrado ─── */
+.equipoHeader {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.equipoEtiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 171, 195, 0.09);
+  border: 1px solid rgba(16, 171, 195, 0.25);
+  color: var(--azul);
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 6px;
 }
 
 /* ─── CARD ─── */
@@ -173,17 +261,6 @@
   position: relative;
 }
 
-.numeroDecor {
-  font-family: "Montserrat", sans-serif;
-  font-size: 100px;
-  font-weight: 900;
-  color: rgba(16, 171, 195, 0.06);
-  line-height: 1;
-  margin-bottom: -32px;
-  letter-spacing: -4px;
-  user-select: none;
-}
-
 .nombre {
   font-family: "Montserrat", sans-serif;
   font-size: 28px;
@@ -225,14 +302,174 @@
   font-size: 14px;
   color: var(--gris);
   line-height: 1.9;
-  margin: 0;
+  margin: 0 0 20px 0;
   font-weight: 400;
+}
+
+/* ─── BOTÓN PERFIL ─── */
+.perfilBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1.5px solid var(--azul);
+  color: var(--azul);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.perfilBtn:hover {
+  background: var(--azul);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════
+   MODAL
+══════════════════════════════ */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  background: var(--blanco);
+  border-radius: 20px;
+  max-width: 780px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modalCerrar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f0f0f0;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--gris);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s, color 0.2s;
+}
+
+.modalCerrar:hover {
+  background: var(--azul);
+  color: white;
+}
+
+.modalContenido {
+  display: flex;
+  gap: 40px;
+  padding: 48px;
+}
+
+.modalImagen {
+  flex-shrink: 0;
+  width: 220px;
+  height: 280px;
+  border-radius: 0;
+  overflow: hidden;
+  background: transparent;
+  align-self: flex-start;
+}
+
+.modalImagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.modalInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalEtiqueta {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--azul);
+  margin-bottom: 10px;
+}
+
+.modalNombre {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.modalBarra {
+  width: 40px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--azul), var(--verde));
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.modalTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.modalTexto {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gris);
+  line-height: 1.85;
+  margin: 0;
 }
 
 /* ══════════════════════════════
    RESPONSIVE
 ══════════════════════════════ */
 @media (max-width: 900px) {
+  .mvSection { padding: 0 40px 48px; }
   .equipo { padding: 0 40px 60px; gap: 24px; }
   .card { padding: 48px 40px; gap: 40px; }
   .titulo { font-size: 36px; }
@@ -241,6 +478,8 @@
 @media (max-width: 768px) {
   .header { padding: 48px 24px 40px; }
   .titulo { font-size: 30px; }
+  .mvSection { grid-template-columns: 1fr; padding: 0 16px 40px; }
+  .mvCard { padding: 32px 28px; }
   .equipo { padding: 0 16px 48px; gap: 20px; }
   .card {
     flex-direction: column;
@@ -250,11 +489,9 @@
   }
   .fotoWrapper, .fotoContenedor { width: 180px; }
   .tags { justify-content: center; }
-  .numeroDecor { font-size: 72px; }
   .nombre { font-size: 22px; }
-}
-
-/* ─── OCULTAR NÚMERO DECORATIVO ─── */
-.numeroDecor {
-  display: none;
+  .perfilBtn { align-self: center; }
+  .modalContenido { flex-direction: column; padding: 32px 24px; gap: 24px; }
+  .modalImagen { width: 100%; max-width: 220px; margin: 0 auto; }
+  .modalNombre { font-size: 20px; }
 }

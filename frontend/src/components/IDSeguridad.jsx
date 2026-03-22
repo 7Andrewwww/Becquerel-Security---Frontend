@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./IDSeguridad.module.css";
 import heroBg from "../assets/hero-bg.jpg";
 import { useTranslation } from "react-i18next";
@@ -12,6 +13,11 @@ const areas = [
     tituloKey: "area1Titulo",
     textoKey: "area1Texto",
     tag: "Laboratorio",
+    emoji: "🧪",
+    modalContenido: [
+      "Desarrollo de formulaciones químicas, jabones especializados y soluciones descontaminantes destinadas a la eliminación de contaminación en manos, superficies, equipos e instrumental utilizados en entornos médicos, industriales y de investigación.",
+      "Estos desarrollos están orientados a entornos donde se manipulan radionúclidos, sustancias químicas peligrosas o materiales contaminantes, como servicios de medicina nuclear, radiofarmacia, laboratorios, industria química, industria energética y centros de investigación.",
+    ],
   },
   {
     icono: (
@@ -23,6 +29,17 @@ const areas = [
     tituloKey: "area2Titulo",
     textoKey: "area2Texto",
     tag: "Medicina Nuclear",
+    emoji: "⚛️",
+    modalContenido: [
+      "Desarrollo de productos y protocolos destinados al control de contaminación en radiofarmacias hospitalarias, servicios de medicina nuclear y laboratorios de investigación, contribuyendo a la manipulación segura de radiofármacos y radionúclidos utilizados en diagnóstico y terapia.",
+      "Estas soluciones incluyen procedimientos para descontaminación de superficies, descontaminación de manos y piel, manejo de derrames radiológicos y control de contaminación en áreas críticas.",
+    ],
+    modalLista: [
+      "Descontaminación de superficies",
+      "Descontaminación de manos y piel",
+      "Manejo de derrames radiológicos",
+      "Control de contaminación en áreas críticas",
+    ],
   },
   {
     icono: (
@@ -36,6 +53,16 @@ const areas = [
     tituloKey: "area3Titulo",
     textoKey: "area3Texto",
     tag: "Industria",
+    emoji: "🏭",
+    modalContenido: [
+      "Investigación y desarrollo de soluciones destinadas a instalaciones industriales donde existen riesgos radiológicos, químicos o físicos, incluyendo industrias petroleras, mineras, energéticas, químicas y manufactureras.",
+    ],
+    modalLista: [
+      "Prevención de contaminación",
+      "Limpieza técnica especializada",
+      "Gestión segura de materiales peligrosos",
+      "Control de riesgos asociados a procesos industriales complejos",
+    ],
   },
   {
     icono: (
@@ -46,6 +73,11 @@ const areas = [
     tituloKey: "area4Titulo",
     textoKey: "area4Texto",
     tag: "Defensa",
+    emoji: "🛡",
+    modalContenido: [
+      "Becquerel Security también orienta parte de sus desarrollos hacia entornos de seguridad institucional y militar, donde es necesario garantizar procedimientos adecuados de control de contaminación, descontaminación de superficies y manejo seguro de materiales potencialmente peligrosos.",
+      "Estas aplicaciones pueden incluir el apoyo técnico en protocolos de descontaminación, manejo de incidentes con materiales peligrosos y fortalecimiento de programas de seguridad radiológica o química.",
+    ],
   },
   {
     icono: (
@@ -57,6 +89,18 @@ const areas = [
     tituloKey: "area5Titulo",
     textoKey: "area5Texto",
     tag: "Seguridad Radiológica",
+    emoji: "👷",
+    modalContenido: [
+      "Todas las soluciones desarrolladas por Becquerel Security se fundamentan en las recomendaciones internacionales de protección radiológica y seguridad ocupacional, orientados a minimizar o contener los riesgos asociados al uso de radiación y sustancias peligrosas.",
+    ],
+    modalLista: [
+      "Protección del personal ocupacionalmente expuesto",
+      "Reducción del riesgo de contaminación radiactiva o química",
+      "Fortalecimiento de los programas de protección radiológica",
+      "Seguridad en entornos clínicos, industriales y tecnológicos",
+      "Protección y seguridad radiológica del medio ambiente",
+      "Cumplimiento de la normativa nacional e internacional aplicable",
+    ],
   },
   {
     icono: (
@@ -70,6 +114,19 @@ const areas = [
     tituloKey: "area6Titulo",
     textoKey: "area6Texto",
     tag: "SST",
+    emoji: "👷",
+    modalContenido: [
+      "El desarrollo de soluciones tecnológicas y metodologías de Becquerel Security también se articula con los principios de Seguridad y Salud en el Trabajo (SST), orientados a la prevención y control de riesgos laborales.",
+      "Estas herramientas pueden aplicarse en organizaciones del sector médico, industrial, energético, minero, militar y tecnológico.",
+    ],
+    modalLista: [
+      "Identificación y control de riesgos físicos, químicos y radiológicos",
+      "Fortalecimiento de programas de prevención y seguridad industrial",
+      "Desarrollo de protocolos de higiene ocupacional",
+      "Capacitación y cultura de seguridad organizacional",
+      "Aplicación de baterías de riesgo psicosocial",
+      "Asesorías y apoyo legal",
+    ],
   },
   {
     icono: (
@@ -80,11 +137,32 @@ const areas = [
     tituloKey: "area7Titulo",
     textoKey: "area7Texto",
     tag: "Innovación",
+    emoji: "⚡",
+    modalContenido: [
+      "Becquerel Security promueve una cultura de innovación científica y desarrollo tecnológico, orientada a generar soluciones que respondan a las necesidades de las organizaciones que trabajan con radiación, sustancias peligrosas o procesos industriales complejos.",
+    ],
+    modalLista: [
+      "Investigación aplicada",
+      "Transferencia tecnológica",
+      "Desarrollo experimental",
+      "Mejora continua de procesos",
+    ],
   },
 ];
 
 function IDSeguridad() {
   const { t } = useTranslation();
+  const [areaAbierta, setAreaAbierta] = useState(null);
+
+  const abrirModal = (area) => {
+    setAreaAbierta(area);
+    document.body.style.overflow = "hidden";
+  };
+
+  const cerrarModal = () => {
+    setAreaAbierta(null);
+    document.body.style.overflow = "";
+  };
 
   const heroTituloLinea1 = t("heroLinea1");
   const heroAcento = t("heroAcento");
@@ -100,20 +178,17 @@ function IDSeguridad() {
           style={{ backgroundImage: `url(${heroBg})` }}
         >
           <div className={styles.heroContent}>
-         
-
             <h1 className={styles.heroTitulo}>
               {heroTituloLinea1}<br />
               <span className={styles.heroAcento}>{heroAcento}</span><br />
               {heroLinea3}
             </h1>
-
             <p className={styles.heroSubtitulo}>{t("heroSubtitulo")}</p>
           </div>
         </div>
       </section>
 
-      {/* INTRO — dentro de un card como misión/visión */}
+      {/* INTRO */}
       <section className={styles.introSection}>
         <div className={styles.introCard}>
           <div className={styles.introTexto}>
@@ -143,7 +218,14 @@ function IDSeguridad() {
         <div className={styles.gridWrapper}>
           <div className={styles.grid}>
             {areas.map((area, i) => (
-              <article key={i} className={styles.card}>
+              <article
+                key={i}
+                className={styles.card}
+                onClick={() => abrirModal(area)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === "Enter" && abrirModal(area)}
+              >
                 <div className={styles.cardIconoWrapper}>
                   <div className={styles.cardIcono}>{area.icono}</div>
                 </div>
@@ -151,6 +233,7 @@ function IDSeguridad() {
                 <h3 className={styles.cardTitulo}>{t(area.tituloKey)}</h3>
                 <p className={styles.cardTexto}>{t(area.textoKey)}</p>
                 <div className={styles.cardLinea} />
+                <span className={styles.cardVerMas}>Ver más →</span>
               </article>
             ))}
           </div>
@@ -172,6 +255,39 @@ function IDSeguridad() {
           </div>
         </div>
       </section>
+
+      {/* MODAL */}
+      {areaAbierta && (
+        <div className={styles.modalOverlay} onClick={cerrarModal}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.modalCerrar} onClick={cerrarModal}>✕</button>
+            <div className={styles.modalContenido}>
+              <div className={styles.modalHeader}>
+                <div className={styles.modalIconoWrapper}>
+                  <div className={styles.modalIcono}>{areaAbierta.icono}</div>
+                </div>
+                <div>
+                  <span className={styles.modalEtiqueta}>{areaAbierta.tag}</span>
+                  <h2 className={styles.modalTitulo}>{t(areaAbierta.tituloKey)}</h2>
+                  <div className={styles.modalBarra} />
+                </div>
+              </div>
+              <div className={styles.modalCuerpo}>
+                {areaAbierta.modalContenido.map((parrafo, i) => (
+                  <p key={i} className={styles.modalTexto}>{parrafo}</p>
+                ))}
+                {areaAbierta.modalLista && (
+                  <ul className={styles.modalLista}>
+                    {areaAbierta.modalLista.map((item, i) => (
+                      <li key={i} className={styles.modalListaItem}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

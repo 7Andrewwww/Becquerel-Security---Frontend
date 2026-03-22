@@ -21,7 +21,6 @@ function Productos({ productosData }) {
     }
   }, [productosData]);
 
-  // Bloquear scroll cuando el modal está abierto
   useEffect(() => {
     if (productoSeleccionado) {
       document.body.style.overflow = "hidden";
@@ -37,6 +36,7 @@ function Productos({ productosData }) {
 
   const totalPaginas = Math.ceil(filtrados.length / VISIBLE);
 
+  // Animación más rápida — 120ms en lugar de 220ms
   const irAPagina = (nuevaP, dir = "derecha") => {
     if (nuevaP === pagina || animando) return;
     setDireccion(dir);
@@ -44,7 +44,7 @@ function Productos({ productosData }) {
     setTimeout(() => {
       setPagina(nuevaP);
       setAnimando(false);
-    }, 220);
+    }, 120);
   };
 
   const handleBusqueda = (e) => {

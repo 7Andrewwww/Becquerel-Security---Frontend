@@ -22,9 +22,7 @@
 }
 
 /* ─── LOGO ─── */
-.logo {
-  flex-shrink: 0;
-}
+.logo { flex-shrink: 0; }
 
 .logo img {
   height: 52px;
@@ -41,21 +39,22 @@
 /* ─── MENÚ DESKTOP ─── */
 .menu {
   display: flex;
-  gap: 4px;
+  gap: 2px;
   align-items: center;
 }
 
 .menu a {
   text-decoration: none;
   color: #606062;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
-  padding: 8px 16px;
+  padding: 8px 12px;
   border-radius: 8px;
   position: relative;
+  white-space: nowrap;
   transition: color 0.2s, background 0.2s;
 }
 
@@ -85,7 +84,7 @@
 .rightSection {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-shrink: 0;
 }
 
@@ -102,10 +101,10 @@
 .langBtn {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   background: transparent;
   border: none;
-  padding: 5px 9px;
+  padding: 5px 8px;
   border-radius: 7px;
   cursor: pointer;
   font-size: 12px;
@@ -128,9 +127,14 @@
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* ─── BANDERA SVG ─── */
 .langFlag {
-  font-size: 13px;
-  line-height: 1;
+  width: 18px;
+  height: 13px;
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
 }
 
 .langLabel {
@@ -144,9 +148,9 @@
   background: #10A8C3;
   color: white;
   border: none;
-  padding: 11px 24px;
+  padding: 10px 20px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   font-family: "Montserrat", "Helvetica Neue", sans-serif;
   cursor: pointer;
@@ -157,6 +161,7 @@
   align-items: center;
   gap: 6px;
   overflow: hidden;
+  white-space: nowrap;
   box-shadow: 0 4px 14px rgb(16, 118, 195);
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
@@ -173,9 +178,7 @@
   transition: left 0.4s ease;
 }
 
-.btnCotizar:hover::before {
-  left: 160%;
-}
+.btnCotizar:hover::before { left: 160%; }
 
 .btnCotizar:hover {
   background: #10A8C3;
@@ -253,12 +256,10 @@
 
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.mobileMenuOpen {
-  display: flex;
-}
+.mobileMenuOpen { display: flex; }
 
 .mobileMenu a {
   text-decoration: none;
@@ -274,9 +275,7 @@
   border-bottom: 1px solid rgba(0,0,0,0.04);
 }
 
-.mobileMenu a:last-of-type {
-  border-bottom: none;
-}
+.mobileMenu a:last-of-type { border-bottom: none; }
 
 .mobileMenu a:hover {
   color: #10ABC3;
@@ -286,69 +285,63 @@
 .mobileBottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-top: 12px;
   padding-top: 16px;
   border-top: 1px solid rgba(0,0,0,0.06);
   gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-/* ─── RESPONSIVE ─── */
+/* ─── Etiquetas siempre visibles en menú móvil ─── */
+.mobileBottom .langLabel {
+  display: inline !important;
+}
 
-/* Tablet */
+/* ══════════════════════════════
+   RESPONSIVE — progresivo
+══════════════════════════════ */
+
+@media (max-width: 1200px) {
+  .navbar { padding: 0 32px; }
+  .menu a { padding: 8px 10px; font-size: 12px; }
+  .btnCotizar { padding: 10px 16px; font-size: 11px; }
+}
+
 @media (max-width: 1024px) {
-  .navbar {
-    padding: 0 32px;
-  }
-
-  .menu {
-    gap: 2px;
-  }
-
-  .menu a {
-    padding: 8px 10px;
-    font-size: 13px;
-  }
-
-  /* En tablet el languageSwitcher se mantiene visible */
-  .languageSwitcher {
-    display: flex;
-  }
+  .navbar { padding: 0 24px; }
+  .menu a { padding: 7px 8px; font-size: 11px; letter-spacing: 0; }
+  .langLabel { display: none; }
+  .btnCotizar { padding: 9px 14px; font-size: 11px; }
 }
 
-/* Mobile */
+@media (max-width: 900px) {
+  .navbar { padding: 0 20px; height: 72px; }
+  .logo img { height: 46px; }
+  .menu { display: none; }
+  .rightSection { display: none; }
+  .hamburger { display: flex; }
+  .mobileMenu { top: 72px; }
+}
+
 @media (max-width: 768px) {
-  .navbar {
-    padding: 0 20px;
-    height: 68px;
-  }
+  .navbar { height: 68px; }
+  .logo img { height: 42px; }
+  .mobileMenu { top: 68px; }
+}
 
-  .logo img {
-    height: 42px;
-  }
+@media (max-width: 480px) {
+  .navbar { padding: 0 16px; height: 62px; }
+  .logo img { height: 38px; }
+  .mobileMenu { top: 62px; padding: 12px 16px 20px; }
+  .mobileMenu a { font-size: 14px; padding: 12px 14px; }
+  .mobileBottom { gap: 8px; }
+  .langBtn { padding: 5px 6px; }
+  .btnCotizar { padding: 9px 14px; font-size: 11px; }
+}
 
-  /* Ocultar menú desktop y sección derecha */
-  .menu {
-    display: none;
-  }
-
-  .rightSection {
-    display: none;
-  }
-
-  /* Mostrar hamburger */
-  .hamburger {
-    display: flex;
-  }
-
-  /* Menú móvil se posiciona debajo del navbar más pequeño */
-  .mobileMenu {
-    top: 68px;
-  }
-
-  /* mobileBottom apila si no hay espacio */
-  .mobileBottom {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+@media (max-width: 360px) {
+  .navbar { padding: 0 12px; }
+  .logo img { height: 34px; }
+  .mobileMenu a { font-size: 13px; padding: 10px 12px; }
 }

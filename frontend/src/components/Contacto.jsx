@@ -96,7 +96,7 @@ function Contacto() {
               <h2 className={styles.cardTitulo}>{t("contactoDirecto")}</h2>
             </div>
             <div className={styles.contactoLista}>
-              <a href="mailto:becquesecsas@gmail.com" className={styles.contactoItem}>
+              <a href="https://mail.google.com/mail/?view=cm&to=becquesecsas@gmail.com" target="_blank" rel="noopener noreferrer" className={styles.contactoItem}>
                 <div className={styles.contactoIcono}><IconoCorreo /></div>
                 <div className={styles.contactoInfo}>
                   <span className={styles.contactoLabel}>{t("correo")}</span>
